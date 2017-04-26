@@ -12,5 +12,15 @@ db.define_table('reviews',
                 Field('review_name',requires=IS_NOT_EMPTY()),
                 Field('review_content','text',requires=IS_NOT_EMPTY()),
                 Field('review_rating','integer',requires=IS_NOT_EMPTY()),
-                Field('time_stamp','datetime',writable,default=request.now)
+                Field('time_stamp','datetime',writable=False,default=request.now)
+                )
+
+db.define_table('retailers',
+                Field('retailer_name',requires=IS_NOT_EMPTY()),
+                Field('retailer_website',requires=IS_NOT_EMPTY())
+                )
+
+db.define_table('product_retail_link',
+                Field('product_id','reference products',requires=IS_NOT_EMPTY()),
+                Field('retailer_id','reference retailers',requires=IS_NOT_EMPTY())
                 )

@@ -1,3 +1,4 @@
 {{extend 'layout.html'}}
-<h1>This is the default/newProduct.html template</h1>
-{{=BEAUTIFY(response._vars)}}
+<h1>Add Product</h1>
+    <h2>Enter product details</h2>
+    {{=form}}

@@ -24,6 +24,10 @@ def newProduct():
     form = SQLFORM(db.products).process()
     return locals()
 
+def newRetailer():
+    form = SQLFORM(db.products).process()
+    return locals()
+
 def user():
     """
     exposes:

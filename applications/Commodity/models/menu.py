@@ -29,7 +29,8 @@ response.google_analytics_id = None
 
 response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
-    (T('New Product'), False, URL('default', 'newProduct'), [])
+    (T('New Product'), False, URL('default', 'newProduct'), []),
+    (T('Add Retailer'), False, URL('default', 'newRetailer'), [])
 ]
 
 DEVELOPMENT_MENU = True
