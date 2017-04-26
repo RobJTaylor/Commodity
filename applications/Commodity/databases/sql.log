@@ -53,3 +53,23 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
+timestamp: 2017-04-26T18:17:54.035000
+CREATE TABLE products(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_name CHAR(512),
+    product_description TEXT,
+    product_price DOUBLE,
+    product_stock INTEGER,
+    product_image CHAR(512),
+    time_stamp TIMESTAMP
+);
+success!
+timestamp: 2017-04-26T18:17:54.059000
+CREATE TABLE reviews(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    review_name CHAR(512),
+    review_content TEXT,
+    review_rating INTEGER,
+    time_stamp TIMESTAMP
+);
+success!
