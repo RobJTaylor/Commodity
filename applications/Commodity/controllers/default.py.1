@@ -21,20 +21,11 @@ def index():
 
 def newProduct():
     form = SQLFORM(db.products).process()
-    retailers = db().select(db.retailers.ALL)
-    i = 0
-    for row in db().select(db.retailers.ALL):
-        i = i + 1
-
-    retailers = [None] * i
-
-    i = 0
-    for row in db().select(db.retailers.ALL):
-        retailers[i] = row.retailer_name
-        i = i + 1
-
-    retailerTable = TABLE(*[TD(*rows) for rows in retailers])
-
+    retailer = db.retailers
+    s = db()
+    rows = s.select()
+    for row in rows:
+        print row.id
     return locals()
 
 def addRetailer():
