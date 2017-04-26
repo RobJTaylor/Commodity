@@ -17,15 +17,14 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    return locals()
 
 def newProduct():
     form = SQLFORM(db.products).process()
     return locals()
 
-def newRetailer():
-    form = SQLFORM(db.products).process()
+def addRetailer():
+    form = SQLFORM(db.retailers).process()
     return locals()
 
 def user():

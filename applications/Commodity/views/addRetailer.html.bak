@@ -1,3 +1,4 @@
 {{extend 'layout.html'}}
-<h1>This is the addRetailer.html template</h1>
+<h1>Add Retailer</h1>
+<h2>Enter retailer details:</h2>
 {{=form}}
