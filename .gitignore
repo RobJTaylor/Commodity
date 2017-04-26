@@ -4,3 +4,5 @@ applications/*/progress.log
 applications/examples/static/epydoc
 applications/examples/static/sphinx
 logs/
+parameters_8000.py
+parameters_8000.py

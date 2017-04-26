@@ -1,0 +1,8 @@
+/*custom css*/
+
+.hdbgcolor {
+    background-color: #31343a;
+}
+h2 .textcolor {
+    color: #dbdde0
+}

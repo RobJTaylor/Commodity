@@ -324,3 +324,9 @@ td.w2p_fc,
 input[type=checkbox], input[type=radio] {
     margin: 4px 4px 0 0;
 }
+
+/*custom css*/
+
+.hdbgcolor {
+    background-color: #31343a;
+}
