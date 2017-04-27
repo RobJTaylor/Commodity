@@ -1,7 +1,14 @@
 /*custom css*/
 a {
-    color: #31343a;
+    color: #dbdde0;
 }
+.newProducts {
+    color: #31343a;
+    padding-left: 20 px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .productLeft {
     float: left;
 }

@@ -1,10 +1,10 @@
 {{extend 'layout.html'}}
 
 {{block header}}
+    <h2 class="newProducts">New Products:</h2>
     <header class=" hdbgcolor">
       <div class="jumbotron text-center hdbgcolor">
           <div class="row">
-              <h2 class="textcolor">New Products:</h2>
               <div class="col-xs-6 col-sm-4">
                   <a href="{{=product1URL}}">
                       <h2 class="textcolor">{{=product1Name}} </h2>
@@ -20,7 +20,7 @@
                   <p class="tagtext">Tags: {{=product2Tag1}} {{=product2Tag2}} {{=product2Tag3}}</p>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <a href="{{=product3URL}}"> 
+                  <a href="{{=product3URL}}">
                       <h2 class="textcolor">{{=product3Name}}</h2>
                       <img src="{{=URL('default', 'download', args=product3Image)}}" class="hdimage"/>
                   </a>
@@ -32,6 +32,7 @@
     </header>
 {{end}}
 
+<h1 class="center">Welcome to Commodity - The Online Review Platform.</h1>
 
 {{block right_sidebar}}
 <div class="panel panel-info">
