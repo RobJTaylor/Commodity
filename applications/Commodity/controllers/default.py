@@ -108,8 +108,17 @@ def viewProduct():
         tag3 = row.tag_3
         timestamp = row.time_stamp
 
+    db.reviews.products_id.default = request.vars.productID
+    db.reviews.review_rating.default = 0
     form = SQLFORM(db.reviews).process()
-    form.products_id = productID
+
+    reviews = db.reviews
+    rProductID = reviews.products_id
+    query = rProductID == request.vars.productID
+    search = db(query)
+
+    newRows = search.select()
+
     return locals()
 
 def user():
