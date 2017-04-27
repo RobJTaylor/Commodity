@@ -1,4 +1,7 @@
 /*custom css*/
+a {
+    color: #dbdde0;
+}
 .productLeft {
     float: left;
 }

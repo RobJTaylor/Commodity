@@ -6,17 +6,21 @@
           <div class="row">
               <h2 class="textcolor">New Products:</h2>
               <div class="col-xs-6 col-sm-4">
-                  <h2 class="textcolor">{{=product1Name}}</h2>
-                  <img src="{{=URL('default', 'download', args=product1Image)}}" class="hdimage"/>
+                  <a href="{{=product1URL}}">
+                      <h2 class="textcolor">{{=product1Name}} </h2>
+                      <img src="{{=URL('default', 'download', args=product1Image)}}" class="hdimage"/> 
+                  </a>
                   <p class="tagtext">Tags: {{=product1Tag1}} {{=product1Tag2}} {{=product1Tag3}}</p>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <h2 class="textcolor">{{=product2Name}}</h2>
-                  <img src="{{=URL('default', 'download', args=product2Image)}}" class="hdimage"/>
+                  <a href="{{=product2URL}}">
+                      <h2 class="textcolor">{{=product2Name}}</h2>
+                      <img src="{{=URL('default', 'download', args=product2Image)}}" class="hdimage"/>
+                  </a>
                   <p class="tagtext">Tags: {{=product2Tag1}} {{=product2Tag2}} {{=product2Tag3}}</p>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <h2 class="textcolor">{{=product3Name}}</h2>
+                  <h2 class="textcolor"> <a href="{{=product3URL}}"> {{=product3Name}} </a></h2>
                   <img src="{{=URL('default', 'download', args=product3Image)}}" class="hdimage"/>
                   <p class="tagtext">Tags: {{=product3Tag1}} {{=product3Tag2}} {{=product3Tag3}}</p>
               </div>

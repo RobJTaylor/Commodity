@@ -1,9 +1,13 @@
 /*custom css*/
+a {
+    color: #31343a;
+}
 .productLeft {
     float: left;
 }
 .productRight {
     float: right;
+    text-align: left;
     margin-left: 0px;
 }
 .largeimage {

@@ -28,12 +28,14 @@ def index():
     product1Tag3 = ""
 
     product2Name = ""
+    product2URL = ""
     product2Image = ""
     product2Tag1 = ""
     product2Tag2 = ""
     product2Tag3 = ""
 
     product3Name = ""
+    product3URL = ""
     product3Image = ""
     product3Tag1 = ""
     product3Tag2 = ""
@@ -105,6 +107,7 @@ def viewProduct():
         tag2 = row.tag_2
         tag3 = row.tag_3
         timestamp = row.time_stamp
+
     return locals()
 
 def user():
