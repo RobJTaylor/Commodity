@@ -1,6 +1,15 @@
 /*custom css*/
+.reviewText {
+    font-style: bold;
+}
+
+.reviews {
+    margin-left: 20px;
+    width: 90%;
+}
 .jumotronlogo {
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 a {

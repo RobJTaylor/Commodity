@@ -3,7 +3,6 @@ db.define_table('products',
                 Field('product_name', requires=IS_NOT_EMPTY()),
                 Field('product_description','text',requires=IS_NOT_EMPTY()),
                 Field('product_price','double',requires=IS_NOT_EMPTY()),
-                Field('product_stock','integer',requires=IS_NOT_EMPTY()),
                 Field('product_image','upload',requires=IS_NOT_EMPTY()),
                 Field('tag_1', requires=IS_NOT_EMPTY()),
                 Field('tag_2', requires=IS_NOT_EMPTY()),
@@ -12,9 +11,11 @@ db.define_table('products',
                 )
 
 db.define_table('reviews',
+                Field('products_id', writable=False),
+                Field('reviewer_name', writable=False),
                 Field('review_name',requires=IS_NOT_EMPTY()),
                 Field('review_content','text',requires=IS_NOT_EMPTY()),
-                Field('review_rating','integer',requires=IS_NOT_EMPTY()),
+                Field('review_rating','integer',requires=IS_NOT_EMPTY(), writable=False),
                 Field('time_stamp','datetime',writable=False,default=request.now)
                 )
 

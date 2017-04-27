@@ -93,7 +93,6 @@ def viewProduct():
     image = ""
     description = ""
     price = ""
-    stock = ""
     tag1 = ""
     tag2 = ""
     tag3 = ""
@@ -104,17 +103,24 @@ def viewProduct():
         image = row.product_image
         description = row.product_description
         price = row.product_price
-        stock = row.product_stock
         tag1 = row.tag_1
         tag2 = row.tag_2
         tag3 = row.tag_3
         timestamp = row.time_stamp
 
+    db.reviews.products_id.default = request.vars.productID
+    db.reviews.reviewer_name.default = auth.user.first_name
+    db.reviews.review_rating.default = 0
     form = SQLFORM(db.reviews).process()
 
-    return locals()
+    reviews = db.reviews
+    rProductID = reviews.products_id
+    query = rProductID == request.vars.productID
+    search = db(query)
 
+    newRows = search.select()
 
+<<<<<<< HEAD
 def searchProduct():
     form = FORM('',
               DIV(LABEL('Product Name:',_class='control-label col-sm-3'),
@@ -140,11 +146,19 @@ def searchProduct():
         redirect(URL('next'))
     elif form.errors:
         response.flash = 'form has errors'
-    else:
-        response.flash = 'please fill the form'
-    return dict(form=form)
+=======
+    loggedIn = 0
 
+    if not auth.is_logged_in():
+        loggedIn = 0
+>>>>>>> origin/master
+    else:
+        loggedIn = 1
+
+<<<<<<< HEAD
 def next():
+=======
+>>>>>>> origin/master
     return locals()
 
 def user():
