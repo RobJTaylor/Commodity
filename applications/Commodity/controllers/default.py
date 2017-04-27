@@ -121,6 +121,25 @@ def viewProduct():
 
     return locals()
 
+
+def searchProduct():
+    form = FORM('Search Product:',
+              DIV(INPUT(_name='name', _class='form-control string')),
+              INPUT(_name='name', _class='form-control string'),
+              INPUT(_name='tagOne', _class='form-control string'),
+              INPUT(_name='tagTwo', _class='form-control string'),
+              INPUT(_name='tagThree', _class='form-control string'),
+              INPUT(_type='submit'))
+    if form.process().accepted:
+        session.flash = 'form accepted'
+        redirect(URL('next'))
+    elif form.errors:
+        response.flash = 'form has errors'
+    else:
+        response.flash = 'please fill the form'
+    return dict(form=form)
+
+
 def user():
     """
     exposes:
