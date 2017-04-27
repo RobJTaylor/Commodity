@@ -7,7 +7,7 @@
     <p>Price: {{=price}}</p>
     <p>Tags: {{=tag1}} {{=tag2}} {{=tag3}}</p>
     {{if loggedIn == 0:}}
-        <form action="{{=URL(args='register')}}">
+        <form action="http://127.0.0.1:8000/Commodity/default/user/register">
             <button type="submit" class="btn btn-info btn-lg">Login/Register to post a review</button>
         </form>
     {{else:}}
@@ -19,7 +19,8 @@
 <section class="reviews">
 {{for row in newRows:}}
     <h2>{{=row.review_name}}</h2>
-    <p class="reviewText">{{=row.time_stamp}}</p>
+    <p class="reviewText">Author: {{=row.reviewer_name}}</p> 
+    <p class="reviewText">Date: {{=row.time_stamp}}</p>
     <p>{{=row.review_content}}</p>
     <p class="reviewText">Rating: {{=row.review_rating}}</p>
 {{pass}}

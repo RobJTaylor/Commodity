@@ -109,6 +109,7 @@ def viewProduct():
         timestamp = row.time_stamp
 
     db.reviews.products_id.default = request.vars.productID
+    db.reviews.reviewer_name.default = auth.user.first_name
     db.reviews.review_rating.default = 0
     form = SQLFORM(db.reviews).process()
 

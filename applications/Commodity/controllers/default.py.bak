@@ -119,13 +119,14 @@ def viewProduct():
 
     newRows = search.select()
 
-    loggedIn = false;
+    loggedIn = 0
 
     if not auth.is_logged_in():
-        loggedIn = false
+        loggedIn = 0
     else:
-        loggedIn = true
+        loggedIn = 1
 
+    username = auth.user.first_name
     return locals()
 
 def user():
