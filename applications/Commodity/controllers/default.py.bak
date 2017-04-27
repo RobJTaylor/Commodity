@@ -104,14 +104,13 @@ def viewProduct():
         image = row.product_image
         description = row.product_description
         price = row.product_price
-        stock = row.product_stock
         tag1 = row.tag_1
         tag2 = row.tag_2
         tag3 = row.tag_3
         timestamp = row.time_stamp
 
     form = SQLFORM(db.reviews).process()
-    
+    form.products_id = productID
     return locals()
 
 def user():
