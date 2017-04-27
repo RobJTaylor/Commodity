@@ -32,7 +32,7 @@ response.menu = [
     (T('New Product'), False, URL('default', 'newProduct'), []),
     (T('Add Retailer'), False, URL('default', 'addRetailer'), []),
     (T('View All Products'), False, URL('default', 'viewAllProducts'), []),
-    (T('Search Products'), False, URL('default', 'searchProducts'), [])
+    (T('Search Products'), False, URL('default', 'searchProduct'), [])
 ]
 
 DEVELOPMENT_MENU = True

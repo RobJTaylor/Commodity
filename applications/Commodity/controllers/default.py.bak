@@ -110,20 +110,18 @@ def viewProduct():
         tag3 = row.tag_3
         timestamp = row.time_stamp
 
-<<<<<<< HEAD
-=======
     form = SQLFORM(db.reviews).process()
-    
->>>>>>> origin/master
+
     return locals()
 
 
-def searchProducts():
+def searchProduct():
     form = FORM('Search Product:',
-              INPUT(_name='name'),
-              INPUT(_name='tagOne'),
-              INPUT(_name='tagTwo'),
-              INPUT(_name='tagThree'),
+              DIV(_class='form-group' INPUT(_name='name', _class='form-control string')),
+              INPUT(_name='name', _class='form-control string'),
+              INPUT(_name='tagOne', _class='form-control string'),
+              INPUT(_name='tagTwo', _class='form-control string'),
+              INPUT(_name='tagThree', _class='form-control string'),
               INPUT(_type='submit'))
     if form.process().accepted:
         session.flash = 'form accepted'
@@ -133,6 +131,7 @@ def searchProducts():
     else:
         response.flash = 'please fill the form'
     return dict(form=form)
+
 
 def user():
     """
