@@ -32,7 +32,7 @@
     </header>
 {{end}}
 
-<h1 class="center">Welcome to Commodity - the online review platform</h1>
+<h1 class="center">Welcome to Commodity - The Online Review Platform.</h1>
 
 {{block right_sidebar}}
 <div class="panel panel-info">

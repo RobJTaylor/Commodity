@@ -1,65 +1,65 @@
 (dp1
-S'retailer_id'
+S'id'
 p2
 (dp3
-S'sortable'
+S'length'
 p4
-L3L
-sS'sql'
-p5
-S'INTEGER REFERENCES retailers (id) ON DELETE CASCADE  '
-p6
-sS'length'
-p7
-L512L
-sS'notnull'
-p8
-L0L
+I512
 sS'unique'
+p5
+I00
+sS'sortable'
+p6
+I1
+sS'sql'
+p7
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p8
+sS'notnull'
 p9
-L0L
+I00
 sS'type'
 p10
-S'reference retailers'
+S'id'
 p11
 ssS'product_id'
 p12
 (dp13
-g4
-L2L
-sg5
-S'INTEGER REFERENCES products (id) ON DELETE CASCADE  '
+S'sortable'
 p14
-sg7
-L512L
-sg8
-L0L
-sg9
-L0L
-sg10
-S'reference products'
+L2L
+sS'sql'
 p15
-ssS'id'
+S'INTEGER REFERENCES products (id) ON DELETE CASCADE  '
 p16
-(dp17
-S'length'
+sS'length'
+p17
+L512L
+sS'notnull'
 p18
-I512
+L0L
 sS'unique'
 p19
-I00
-sS'sortable'
-p20
-I1
-sS'sql'
-p21
-S'INTEGER PRIMARY KEY AUTOINCREMENT'
-p22
-sS'notnull'
-p23
-I00
+L0L
 sS'type'
+p20
+S'reference products'
+p21
+ssS'retailer_id'
+p22
+(dp23
+g14
+L3L
+sg15
+S'INTEGER REFERENCES retailers (id) ON DELETE CASCADE  '
 p24
-S'id'
+sg17
+L512L
+sg18
+L0L
+sg19
+L0L
+sg20
+S'reference retailers'
 p25
 ss.
