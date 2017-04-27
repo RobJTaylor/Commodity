@@ -28,12 +28,14 @@ def index():
     product1Tag3 = ""
 
     product2Name = ""
+    product2URL = ""
     product2Image = ""
     product2Tag1 = ""
     product2Tag2 = ""
     product2Tag3 = ""
 
     product3Name = ""
+    product3URL = ""
     product3Image = ""
     product3Tag1 = ""
     product3Tag2 = ""
@@ -52,6 +54,7 @@ def index():
         elif i == 1:
             product2Name = row.product_name
             product2Image = row.product_image
+            product2URL = URL('viewProduct', vars=dict(productID=row.id))
             product2Tag1 = row.tag_1
             product2Tag2 = row.tag_2
             product2Tag3 = row.tag_3
@@ -59,6 +62,7 @@ def index():
         elif i == 2:
             product3Name = row.product_name
             product3Image = row.product_image
+            product3URL = URL('viewProduct', vars=dict(productID=row.id))
             product3Tag1 = row.tag_1
             product3Tag2 = row.tag_2
             product3Tag3 = row.tag_3
@@ -106,6 +110,11 @@ def viewProduct():
         tag3 = row.tag_3
         timestamp = row.time_stamp
 
+<<<<<<< HEAD
+=======
+    form = SQLFORM(db.reviews).process()
+    
+>>>>>>> origin/master
     return locals()
 
 

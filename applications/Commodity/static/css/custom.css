@@ -1,4 +1,18 @@
 /*custom css*/
+.jumotronlogo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+a {
+    color: #dbdde0;
+}
+.newProducts {
+    color: #31343a;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .productLeft {
     float: left;
 }
