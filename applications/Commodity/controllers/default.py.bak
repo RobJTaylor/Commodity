@@ -83,9 +83,28 @@ def viewProduct():
     queryID = request.vars.productID
     query = productID == queryID
     search = db(query)
-    rows = s.select()
+    rows = search.select()
+
+    name = ""
+    image = ""
+    description = ""
+    price = ""
+    stock = ""
+    tag1 = ""
+    tag2 = ""
+    tag3 = ""
+    timestamp = ""
+
     for row in rows:
-        print row.id, row.product_name
+        name = row.product_name
+        image = row.product_image
+        description = row.product_description
+        price = row.product_price
+        stock = row.product_stock
+        tag1 = row.tag_1
+        tag2 = row.tag_2
+        tag3 = row.tag_3
+        timestamp = row.time_stamp
     return locals()
 
 def user():

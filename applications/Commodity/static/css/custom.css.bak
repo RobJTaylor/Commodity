@@ -1,4 +1,16 @@
 /*custom css*/
+.productLeft {
+    float: left;
+}
+.productRight {
+    float: right;
+    margin-left: 0px;
+}
+.largeimage {
+    width: 100%;
+    height: auto;
+    max-width: 550px;
+}
 .hdimage {
     width: auto;
     height: 15vh;
@@ -15,7 +27,4 @@
 .tagtext {
     color: #dbdde0;
     font-size: 10px;
-}
-.headertext {
-    margin-left: 0px;
 }

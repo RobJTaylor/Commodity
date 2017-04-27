@@ -17,34 +17,81 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
+    product = db.products
+    productName = product.product_name
+
+    product1Name = ""
+    product1URL = ""
+    product1Image = ""
+    product1Tag1 = ""
+    product1Tag2 = ""
+    product1Tag3 = ""
+
+    product2Name = ""
+    product2Image = ""
+    product2Tag1 = ""
+    product2Tag2 = ""
+    product2Tag3 = ""
+
+    product3Name = ""
+    product3Image = ""
+    product3Tag1 = ""
+    product3Tag2 = ""
+    product3Tag3 = ""
+
+    i = 0
+    for row in db().select(db.products.ALL, limitby=(0,3), orderby=~db.products.time_stamp):
+        if i == 0:
+            product1Name = row.product_name
+            product1Image = row.product_image
+            product1Tag1 = row.tag_1
+            product1Tag2 = row.tag_2
+            product1Tag3 = row.tag_3
+            i = i + 1
+        elif i == 1:
+            product2Name = row.product_name
+            product2Image = row.product_image
+            product2Tag1 = row.tag_1
+            product2Tag2 = row.tag_2
+            product2Tag3 = row.tag_3
+            i = i + 1
+        elif i == 2:
+            product3Name = row.product_name
+            product3Image = row.product_image
+            product3Tag1 = row.tag_1
+            product3Tag2 = row.tag_2
+            product3Tag3 = row.tag_3
+            i = i + 1
     return locals()
 
 def newProduct():
-    form = SQLFORM(db.products)
-    if form.process(session=None, formname='product').accepted:
-        response.flash = 'form accepted'
-        linkProductRetailer()
-    retailers = db().select(db.retailers.ALL)
-    i = 0
-    for row in db().select(db.retailers.ALL):
-        i = i + 1
-
-    retailers = [None] * i
-
-    i = 0
-    for row in db().select(db.retailers.ALL):
-        retailers[i] = row.retailer_name
-        i = i + 1
-
-    retailerTable = TABLE(*[TD(*rows) for rows in retailers])
-
+    form = SQLFORM(db.products).process()
     return locals()
 
 def addRetailer():
     form = SQLFORM(db.retailers).process()
     return locals()
 
-def linkProductRetailer():
+def viewAllProducts():
+    rows = db(db.products).select()
+    return locals()
+
+def viewProduct(product_id):
+    product = db.products
+    productID = products.id
+    query = productID == product_id
+    search = db(query)
+    rows = search.select()
+
+    productName = ""
+    productImage = ""
+    productTag1 = ""
+    productTag2 = ""
+    productTag3 = ""
+
+    for row in rows:
+        print row.id, row.product_name
+
     return locals()
 
 def user():
