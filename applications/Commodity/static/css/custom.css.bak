@@ -3,6 +3,6 @@
 .hdbgcolor {
     background-color: #31343a;
 }
-h2 .textcolor {
+.textcolor {
     color: #dbdde0
 }

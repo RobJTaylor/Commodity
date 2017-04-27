@@ -4,20 +4,20 @@ p2
 (dp3
 S'sortable'
 p4
-I3
+L3L
 sS'sql'
 p5
 S'INTEGER REFERENCES retailers (id) ON DELETE CASCADE  '
 p6
 sS'length'
 p7
-I512
+L512L
 sS'notnull'
 p8
-I00
+L0L
 sS'unique'
 p9
-I00
+L0L
 sS'type'
 p10
 S'reference retailers'
@@ -26,16 +26,16 @@ ssS'product_id'
 p12
 (dp13
 g4
-I2
+L2L
 sg5
 S'INTEGER REFERENCES products (id) ON DELETE CASCADE  '
 p14
 sg7
-I512
+L512L
 sg8
-I00
+L0L
 sg9
-I00
+L0L
 sg10
 S'reference products'
 p15

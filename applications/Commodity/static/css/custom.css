@@ -2,6 +2,7 @@
 
 .hdbgcolor {
     background-color: #31343a;
+    overflow: hidden;
 }
 .textcolor {
     color: #dbdde0
