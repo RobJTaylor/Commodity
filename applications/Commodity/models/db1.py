@@ -5,6 +5,9 @@ db.define_table('products',
                 Field('product_price','double',requires=IS_NOT_EMPTY()),
                 Field('product_stock','integer',requires=IS_NOT_EMPTY()),
                 Field('product_image','upload',requires=IS_NOT_EMPTY()),
+                Field('tag_1', requires=IS_NOT_EMPTY()),
+                Field('tag_2', requires=IS_NOT_EMPTY()),
+                Field('tag_3', requires=IS_NOT_EMPTY()),
                 Field('time_stamp','datetime',writable=False,default=request.now)
                 )
 

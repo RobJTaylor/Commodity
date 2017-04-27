@@ -20,16 +20,31 @@ def index():
     return locals()
 
 def newProduct():
-    form = SQLFORM(db.products).process()
-    retailer = db.retailers
-    s = db()
-    rows = s.select()
-    for row in rows:
-        print row.id
+    form = SQLFORM(db.products)
+    if form.process(session=None, formname='product').accepted:
+        response.flash = 'form accepted'
+        linkProductRetailer()
+    retailers = db().select(db.retailers.ALL)
+    i = 0
+    for row in db().select(db.retailers.ALL):
+        i = i + 1
+
+    retailers = [None] * i
+
+    i = 0
+    for row in db().select(db.retailers.ALL):
+        retailers[i] = row.retailer_name
+        i = i + 1
+
+    retailerTable = TABLE(*[TD(*rows) for rows in retailers])
+
     return locals()
 
 def addRetailer():
     form = SQLFORM(db.retailers).process()
+    return locals()
+
+def linkProductRetailer():
     return locals()
 
 def user():

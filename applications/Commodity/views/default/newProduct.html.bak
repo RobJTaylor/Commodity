@@ -3,7 +3,9 @@
     <h2>Enter product details:</h2>
     <form action="#" enctype="multipart/form-data" method="post">
         <ul>
-            <input type="text" name="productName">
+            <li>
+                <p>Product Name:</p><input type="text" name="productName">
+            </li>
             <input type="submit" />
             <input type="hidden" name="product" value="test" />
         </ul>

@@ -17,38 +17,33 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
+    product = db.products
+    productName = product.product_name
+
+    product1Name = ""
+    product2Name = ""
+    product3Name = ""
+    i = 0
+    for row in db().select(db.products.ALL, limitby=(0,3)):
+        if i == 0:
+            product1Name = row.product_name
+        elif i == 1:
+            product2Name = row.product_name
+        elif i == 2:
+            product3Name = row.product_name
     return locals()
 
 def newProduct():
-    form = SQLFORM(db.products)
-    if form.process(session=None, formname='product').accepted:
-        response.flasg = 'form accepted'
-        linkProductRetailer()
-    retailers = db().select(db.retailers.ALL)
-    i = 0
-    for row in db().select(db.retailers.ALL):
-        i = i + 1
-
-    retailers = [None] * i
-
-    i = 0
-    for row in db().select(db.retailers.ALL):
-        retailers[i] = row.retailer_name
-        i = i + 1
-
-    retailerTable = TABLE(*[TD(*rows) for rows in retailers])
-
+    form = SQLFORM(db.products).process()
     return locals()
 
 def addRetailer():
     form = SQLFORM(db.retailers).process()
     return locals()
 
-def linkProductRetailer():
-    return locals()
-
 def viewAllProducts():
     rows = db(db.products).select()
+    return locals()
 
 def user():
     """

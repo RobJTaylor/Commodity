@@ -5,13 +5,13 @@
       <div class="jumbotron text-center hdbgcolor">
           <div class="row">
               <div class="col-xs-6 col-sm-4">
-                  <h2>Hello Product</h2>
+                  <h2 class="textcolor">{{=product1Name}}</h2>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <h2>Hello Product</h2>
+                  <h2 class="textcolor">Hello Product</h2>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <h2>Hello Product</h2>
+                  <h2 class="textcolor">Hello Product</h2>
               </div>
               </div>
         </div>
