@@ -105,7 +105,25 @@ def viewProduct():
         tag2 = row.tag_2
         tag3 = row.tag_3
         timestamp = row.time_stamp
+
     return locals()
+
+
+def searchProducts():
+    form = FORM('Search Product:',
+              INPUT(_name='name'),
+              INPUT(_name='tagOne'),
+              INPUT(_name='tagTwo'),
+              INPUT(_name='tagThree'),
+              INPUT(_type='submit'))
+    if form.process().accepted:
+        session.flash = 'form accepted'
+        redirect(URL('next'))
+    elif form.errors:
+        response.flash = 'form has errors'
+    else:
+        response.flash = 'please fill the form'
+    return dict(form=form)
 
 def user():
     """

@@ -108,6 +108,23 @@ def viewProduct():
 
     return locals()
 
+
+def searchProducts():
+    form = FORM('Search Product:',
+              INPUT(_name='name'),
+              INPUT(_name='tagOne'),
+              INPUT(_name='tagTwo'),
+              INPUT(_name='tagThree'),
+              INPUT(_type='submit'))
+    if form.process().accepted:
+        session.flash = 'form accepted'
+        redirect(URL('next'))
+    elif form.errors:
+        response.flash = 'form has errors'
+    else:
+        response.flash = 'please fill the form'
+    return locals()
+
 def user():
     """
     exposes:

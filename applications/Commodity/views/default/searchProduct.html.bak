@@ -1,0 +1,3 @@
+{{extend 'layout.html'}}
+{{form}}
+<h2>Enter details to search products:</h2>
