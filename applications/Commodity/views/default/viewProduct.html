@@ -16,15 +16,23 @@
 </section>
 
 <h1>Reviews:</h1>
-<section class="reviews">
 {{for row in newRows:}}
-    <h2>{{=row.review_name}}</h2>
-    <p class="reviewText">Date: {{=row.time_stamp}}</p>
-    <p class="reviewText">Author: {{=row.reviewer_name}}</p>
-    <p>{{=row.review_content}}</p>
-    <p class="reviewText">Rating: {{=row.review_rating}}</p>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4>{{=row.review_name}}</h4>
+    </div>
+    <div class="panel-body">
+        <p class="reviewText">Date: {{=row.time_stamp}}</p>
+        <p class="reviewText">Author: {{=row.reviewer_name}}</p>
+        <h4>Comments:</h4>
+        <p class="reviewText">{{=row.review_content}}</p>
+        <p class="reviewText">Rating: {{=row.review_rating}}</p>
+    </div>
+    <div class="panel-footer">
+        <p>Was this review helpful? <a href="memes.com">Yes</a> <a href="memes.com">No</a></p>
+    </div>
+</div>
 {{pass}}
-</section>
 
 <div id="reviewModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
