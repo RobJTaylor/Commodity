@@ -24,7 +24,7 @@ def index():
     product2Name = ""
     product3Name = ""
     i = 0
-    for row in db().select(db.products.ALL, limitby=(0,3)):
+    for row in db().select(db.products.ALL, limitby=(0,3), orderby=~db.products.time_stamp):
         if i == 0:
             product1Name = row.product_name
             i = i + 1

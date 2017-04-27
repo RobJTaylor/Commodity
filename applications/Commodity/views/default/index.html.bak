@@ -8,10 +8,10 @@
                   <h2 class="textcolor">{{=product1Name}}</h2>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <h2 class="textcolor">Hello Product</h2>
+                  <h2 class="textcolor">{{=product2Name}}</h2>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <h2 class="textcolor">Hello Product</h2>
+                  <h2 class="textcolor">{{=product3Name}}</h2>
               </div>
               </div>
         </div>
