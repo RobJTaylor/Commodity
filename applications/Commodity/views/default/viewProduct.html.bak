@@ -7,7 +7,7 @@
     <p>Price: {{=price}}</p>
     <p>Tags: {{=tag1}} {{=tag2}} {{=tag3}}</p>
     {{if loggedIn == 0:}}
-        <form action="http://127.0.0.1:8000/Commodity/default/user/register">
+        <form action="http://127.0.0.1:8000/Commodity/default/user/login">
             <button type="submit" class="btn btn-info btn-lg">Login/Register to post a review</button>
         </form>
     {{else:}}
@@ -29,7 +29,7 @@
         <p class="reviewText">Rating: {{=row.review_rating}}</p>
     </div>
     <div class="panel-footer">
-        <p>Was this review helpful? <a href="memes.com">Yes</a> <a href="memes.com">No</a></p>
+        <p>Was this review helpful? {{=A('Yes', callback=URL('upvote', args=row.id))}} {{=A('No', callback=URL('downvote', args=row.id))}}</p>
     </div>
 </div>
 {{pass}}

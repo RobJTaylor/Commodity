@@ -108,11 +108,6 @@ def viewProduct():
         tag3 = row.tag_3
         timestamp = row.time_stamp
 
-    db.reviews.products_id.default = request.vars.productID
-    db.reviews.reviewer_name.default = auth.user.first_name
-    db.reviews.review_rating.default = 0
-    form = SQLFORM(db.reviews).process()
-
     reviews = db.reviews
     rProductID = reviews.products_id
     query = rProductID == request.vars.productID
@@ -126,6 +121,39 @@ def viewProduct():
         loggedIn = 0
     else:
         loggedIn = 1
+        db.reviews.reviewer_name.default = auth.user.first_name
+
+    db.reviews.products_id.default = request.vars.productID
+    db.reviews.review_rating.default = 0
+    form = SQLFORM(db.reviews).process()
+
+    return locals()
+
+def upvote():
+    reviews = db.reviews
+    reviewID = reviews.id
+    query = reviewID == request.args[0]
+    search = db(query)
+    rows = search.select()
+
+    for row in rows:
+        reviewRating = row.review_rating
+        reviewRating = reviewRating + 1
+        row.update_record(review_rating=reviewRating)
+
+    return locals()
+
+def downvote():
+    reviews = db.reviews
+    reviewID = reviews.id
+    query = reviewID == request.args[0]
+    search = db(query)
+    rows = search.select()
+
+    for row in rows:
+        reviewRating = row.review_rating
+        reviewRating = reviewRating - 1
+        row.update_record(review_rating=reviewRating)
 
     return locals()
 

@@ -125,8 +125,36 @@ def viewProduct():
         loggedIn = 0
     else:
         loggedIn = 1
+        db.reviews.reviewer_name.default = auth.user.first_name
 
-    username = auth.user.first_name
+    return locals()
+
+def upvote():
+    reviews = db.reviews
+    reviewID = reviews.id
+    query = reviewID == request.args[0]
+    search = db(query)
+    rows = search.select()
+
+    for row in rows:
+        reviewRating = row.review_rating
+        reviewRating = reviewRating + 1
+        row.update_record(review_rating=reviewRating)
+
+    return locals()
+
+def downvote():
+    reviews = db.reviews
+    reviewID = reviews.id
+    query = reviewID == request.args[0]
+    search = db(query)
+    rows = search.select()
+
+    for row in rows:
+        reviewRating = row.review_rating
+        reviewRating = reviewRating - 1
+        row.update_record(review_rating=reviewRating)
+
     return locals()
 
 def user():
