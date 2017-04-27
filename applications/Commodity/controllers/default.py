@@ -116,13 +116,25 @@ def viewProduct():
 
 
 def searchProduct():
-    form = FORM('Search Product:',
-              DIV(INPUT(_name='name', _class='form-control string')),
-              INPUT(_name='name', _class='form-control string'),
-              INPUT(_name='tagOne', _class='form-control string'),
-              INPUT(_name='tagTwo', _class='form-control string'),
-              INPUT(_name='tagThree', _class='form-control string'),
-              INPUT(_type='submit'))
+    form = FORM('',
+              DIV(LABEL('Product Name:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='productName', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagOne', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagTwo', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagThree', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(DIV(INPUT(_type='submit', _class="btn btn-primary"),
+                      _class='col-sm-9 col-sm-offset-3'), _class='form-group'))
     if form.process().accepted:
         session.flash = 'form accepted'
         redirect(URL('next'))
@@ -132,6 +144,8 @@ def searchProduct():
         response.flash = 'please fill the form'
     return dict(form=form)
 
+def next():
+    return locals()
 
 def user():
     """
