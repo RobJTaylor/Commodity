@@ -6,15 +6,22 @@
     <p>{{=description}}</p>
     <p>Price: {{=price}}</p>
     <p>Tags: {{=tag1}} {{=tag2}} {{=tag3}}</p>
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#reviewModal">Leave a Review</button>
+    {{if loggedIn == 0:}}
+        <form action="{{=URL(args='register')}}">
+            <button type="submit" class="btn btn-info btn-lg">Login/Register to post a review</button>
+        </form>
+    {{else:}}
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#reviewModal">Leave a Review</button>
+    {{pass}}
 </section>
+
 <h1>Reviews:</h1>
 <section class="reviews">
 {{for row in newRows:}}
     <h2>{{=row.review_name}}</h2>
     <p class="reviewText">{{=row.time_stamp}}</p>
     <p>{{=row.review_content}}</p>
-    <p>Rating: {{=row.review_rating}}</p>
+    <p class="reviewText">Rating: {{=row.review_rating}}</p>
 {{pass}}
 </section>
 
