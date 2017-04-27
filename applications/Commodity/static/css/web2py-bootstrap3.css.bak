@@ -144,6 +144,10 @@ header h1 {
 }
 header .jumbotron {
     background-color: transparent;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    paddint-top: 0px;
 }
 .w2p_flash {
     opacity: 0.9!important;
@@ -323,10 +327,4 @@ td.w2p_fc,
 }
 input[type=checkbox], input[type=radio] {
     margin: 4px 4px 0 0;
-}
-
-/*custom css*/
-
-.hdbgcolor {
-    background-color: #31343a;
 }

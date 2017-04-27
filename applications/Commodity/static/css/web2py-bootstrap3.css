@@ -144,6 +144,10 @@ header h1 {
 }
 header .jumbotron {
     background-color: transparent;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
 }
 .w2p_flash {
     opacity: 0.9!important;

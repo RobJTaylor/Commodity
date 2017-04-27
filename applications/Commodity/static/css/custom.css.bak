@@ -1,8 +1,21 @@
 /*custom css*/
-
+.hdimage {
+    width: auto;
+    height: 15vh;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
 .hdbgcolor {
     background-color: #31343a;
+    overflow: hidden;
 }
 .textcolor {
-    color: #dbdde0
+    color: #dbdde0;
+}
+.tagtext {
+    color: #dbdde0;
+    font-size: 10px;
+}
+.headertext {
+    margin-left: 0px;
 }
