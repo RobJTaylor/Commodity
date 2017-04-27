@@ -3,8 +3,8 @@
 {{block header}}
     <header class=" hdbgcolor">
       <div class="jumbotron text-center hdbgcolor">
-                        <h2 class="textcolor">New Products:</h2>
           <div class="row">
+              <h2 class="textcolor">New Products:</h2>
               <div class="col-xs-6 col-sm-4">
                   <h2 class="textcolor">{{=product1Name}}</h2>
                   <img src="{{=URL('default', 'download', args=product1Image)}}" class="hdimage"/>

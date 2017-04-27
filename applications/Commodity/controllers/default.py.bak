@@ -21,6 +21,7 @@ def index():
     productName = product.product_name
 
     product1Name = ""
+    product1URL = ""
     product1Image = ""
     product1Tag1 = ""
     product1Tag2 = ""
@@ -43,9 +44,10 @@ def index():
         if i == 0:
             product1Name = row.product_name
             product1Image = row.product_image
+            product1URL = URL('viewProduct', vars=dict(productID=row.id))
             product1Tag1 = row.tag_1
-            product1Tag1 = row.tag_2
-            product1Tag1 = row.tag_3
+            product1Tag2 = row.tag_2
+            product1Tag3 = row.tag_3
             i = i + 1
         elif i == 1:
             product2Name = row.product_name
@@ -73,6 +75,17 @@ def addRetailer():
 
 def viewAllProducts():
     rows = db(db.products).select()
+    return locals()
+
+def viewProduct():
+    product = db.products
+    productID = product.id
+    queryID = request.vars.productID
+    query = productID == queryID
+    search = db(query)
+    rows = s.select()
+    for row in rows:
+        print row.id, row.product_name
     return locals()
 
 def user():
