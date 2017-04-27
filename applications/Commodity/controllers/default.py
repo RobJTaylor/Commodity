@@ -110,6 +110,8 @@ def viewProduct():
         tag3 = row.tag_3
         timestamp = row.time_stamp
 
+    form = SQLFORM(db.reviews).process()
+
     return locals()
 
 def user():
