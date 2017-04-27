@@ -6,25 +6,34 @@
           <img src="../static/images/Commodity_Logo.png" alt="Commodity Logo" class="jumotronlogo">
           <div class="row">
               <div class="col-xs-6 col-sm-4">
-                  <a href="{{=product1URL}}">
-                      <h2 class="textcolor">{{=product1Name}} </h2>
-                      <img src="{{=URL('default', 'download', args=product1Image)}}" class="hdimage"/> 
-                  </a>
-                  <p class="tagtext">Tags: {{=product1Tag1}} {{=product1Tag2}} {{=product1Tag3}}</p>
+                  <div class="thumbnail">
+                      <img src="{{=URL('default', 'download', args=product1Image)}}"/>
+                      <div class="caption">
+                          <h3>{{=product1Name}} <span class="label label-success">NEW</span> </h3>
+                          <p>Tags: {{=product1Tag1}} {{=product1Tag2}} {{=product1Tag3}}</p>
+                          <p><a href="{{=product1URL}}" class="btn btn-primary" role="button">View {{=product1Name}}</a></p>
+                      </div>
+                  </div>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <a href="{{=product2URL}}">
-                      <h2 class="textcolor">{{=product2Name}}</h2>
-                      <img src="{{=URL('default', 'download', args=product2Image)}}" class="hdimage"/>
-                  </a>
-                  <p class="tagtext">Tags: {{=product2Tag1}} {{=product2Tag2}} {{=product2Tag3}}</p>
+                  <div class="thumbnail">
+                      <img src="{{=URL('default', 'download', args=product2Image)}}"/>
+                      <div class="caption">
+                          <h3>{{=product2Name}} <span class="label label-success">NEW</span> </h3>
+                          <p>Tags: {{=product2Tag1}} {{=product2Tag2}} {{=product2Tag3}}</p>
+                          <p><a href="{{=product2URL}}" class="btn btn-primary" role="button">View {{=product2Name}}</a></p>
+                      </div>
+                  </div>
               </div>
               <div class="col-xs-6 col-sm-4">
-                  <a href="{{=product3URL}}">
-                      <h2 class="textcolor">{{=product3Name}}</h2>
-                      <img src="{{=URL('default', 'download', args=product3Image)}}" class="hdimage"/>
-                  </a>
-                  <p class="tagtext">Tags: {{=product3Tag1}} {{=product3Tag2}} {{=product3Tag3}}</p>
+                  <div class="thumbnail">
+                      <img src="{{=URL('default', 'download', args=product3Image)}}"/>
+                      <div class="caption">
+                          <h3>{{=product3Name}} <span class="label label-success">NEW</span> </h3>
+                          <p>Tags: {{=product3Tag1}} {{=product3Tag2}} {{=product3Tag3}}</p>
+                          <p><a href="{{=product3URL}}" class="btn btn-primary" role="button">View {{=product3Name}}</a></p>
+                      </div>
+                  </div>
               </div>
               </div>
         </div>
@@ -34,6 +43,9 @@
 
 <h1 class="center">Welcome to Commodity - The Product Review Platform.</h1>
 
+<div class="jumbotron center">
+    <h3>New Reviews:</h3>
+</div>
 {{block right_sidebar}}
 <div class="panel panel-info">
   <div class="panel-heading"><h3 class="panel-title"><a class="btn-block"

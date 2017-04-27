@@ -1,6 +1,17 @@
 /*custom css*/
+.helpfulText {
+    color: #000000;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .reviewText {
-    font-style: bold;
+    font-weight: bold;
 }
 
 .reviews {

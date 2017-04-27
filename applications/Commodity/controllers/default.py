@@ -97,6 +97,7 @@ def viewProduct():
     tag2 = ""
     tag3 = ""
     timestamp = ""
+    i = 0
 
     for row in rows:
         name = row.product_name
@@ -107,6 +108,23 @@ def viewProduct():
         tag2 = row.tag_2
         tag3 = row.tag_3
         timestamp = row.time_stamp
+
+    for row in db().select(db.review_rate.review_id,db.review_rate.user_id):
+        i = i + 1
+
+    if i == 0:
+        resultsArray = [0] * 1
+    else:
+        resultsArray = [0] * i
+
+    i = 0
+
+    for row in db().select(db.review_rate.review_id,db.review_rate.user_id):
+        if row.review_id == request.vars.productID and row.user_id == auth.user.id:
+            resultsArray[i] = 1;
+            i = i + 1
+        else:
+            i = i + 1
 
     reviews = db.reviews
     rProductID = reviews.products_id
@@ -141,6 +159,10 @@ def upvote():
         reviewRating = reviewRating + 1
         row.update_record(review_rating=reviewRating)
 
+    reviewID = request.args[0]
+    userID = auth.user.id
+    db.review_rate.insert(user_id=userID,review_id=reviewID)
+
     return locals()
 
 def downvote():
@@ -155,6 +177,37 @@ def downvote():
         reviewRating = reviewRating - 1
         row.update_record(review_rating=reviewRating)
 
+    reviewID = request.args[0]
+    userID = auth.user.id
+    db.review_rate.insert(user_id=userID,review_id=reviewID)
+
+    return locals()
+
+def searchProduct():
+    form = FORM('',
+              DIV(LABEL('Product Name:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='productName', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagOne', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagTwo', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagThree', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(DIV(INPUT(_type='submit', _class="btn btn-primary"),
+                      _class='col-sm-9 col-sm-offset-3'), _class='form-group'))
+    if form.process().accepted:
+        session.flash = 'form accepted'
+        redirect(URL('next'))
+    elif form.errors:
+        response.flash = 'form has errors'
     return locals()
 
 def user():

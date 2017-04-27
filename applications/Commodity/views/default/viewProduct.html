@@ -1,7 +1,7 @@
 {{extend 'layout.html'}}
 <section class="center">
     <h1>{{=name}}</h1>
-    <img src="{{=URL('default', 'download', args=image)}}" class="largeimage"/>
+    <img src="{{=URL('default', 'download', args=image)}}" class="largeimage thumbnail"/>
     <h2>Description:</h2>
     <p>{{=description}}</p>
     <p>Price: £{{=price}}</p>
@@ -29,7 +29,9 @@
         <p class="reviewText">Rating: {{=row.review_rating}}</p>
     </div>
     <div class="panel-footer">
-        <p>Was this review helpful? {{=A('Yes', callback=URL('upvote', args=row.id))}} {{=A('No', callback=URL('downvote', args=row.id))}}</p>
+            <p class="helpfulText">Was this review helpful? <a href="http://127.0.0.1:8000/Commodity/default/user/login">Login/Register to rate it</a></p>
+            <p class="helpfulText">Was this review helpful? {{=A('Yes', callback=URL('upvote', args=row.id))}} {{=A('No', callback=URL('downvote', args=row.id))}} </p>
+            <p class="helpfulText">Was this review helpful? <a href="http://127.0.0.1:8000/Commodity/default/user/login">Login/Register to rate it</a></p>
     </div>
 </div>
 {{pass}}

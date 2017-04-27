@@ -12,6 +12,7 @@ db.define_table('products',
 
 db.define_table('reviews',
                 Field('products_id', writable=False),
+                Field('reviewer_name', writable=False),
                 Field('review_name',requires=IS_NOT_EMPTY()),
                 Field('review_content','text',requires=IS_NOT_EMPTY()),
                 Field('review_rating','integer',requires=IS_NOT_EMPTY(), writable=False),
