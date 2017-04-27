@@ -20,7 +20,10 @@ def index():
     return locals()
 
 def newProduct():
-    form = SQLFORM(db.products).process()
+    form = SQLFORM(db.products)
+    if form.process(session=None, formname='product').accepted:
+        response.flasg = 'form accepted'
+        linkProductRetailer()
     retailers = db().select(db.retailers.ALL)
     i = 0
     for row in db().select(db.retailers.ALL):
@@ -39,6 +42,13 @@ def newProduct():
 
 def addRetailer():
     form = SQLFORM(db.retailers).process()
+    return locals()
+
+def linkProductRetailer():
+    return locals()
+
+def viewAllProducts():
+    rows = db(db.products).select()
     return locals()
 
 def user():

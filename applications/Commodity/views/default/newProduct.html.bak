@@ -1,9 +1,13 @@
 {{extend 'layout.html'}}
 <h1>Add Product</h1>
     <h2>Enter product details:</h2>
-    {{=form}}
+    <form action="#" enctype="multipart/form-data" method="post">
+        <ul>
+            <input type="text" name="productName">
+            <input type="submit" />
+            <input type="hidden" name="product" value="test" />
+        </ul>
+    </form>
     <h2>Where is this product available at?</h2>
 
-    <section class="table">
-        {{=retailerTable}}
-    </section>
+    {{=retailerTable}}
