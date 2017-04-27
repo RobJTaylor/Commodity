@@ -1,4 +1,9 @@
 /*custom css*/
+.jumotronlogo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 a {
     color: #dbdde0;
 }
