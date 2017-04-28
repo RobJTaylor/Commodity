@@ -227,6 +227,9 @@ def searchProduct():
         response.flash = 'form has errors'
     return locals()
 
+def searchResults():
+    return locals()
+
 def user():
     """
     exposes:
