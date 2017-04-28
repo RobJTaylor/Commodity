@@ -6,3 +6,6 @@ applications/examples/static/sphinx
 logs/
 parameters_8000.py
 parameters_8000.py
+*.table
+*.log
+*.sqlite
