@@ -153,6 +153,7 @@ def viewProduct():
     else:
         loggedIn = 1
         db.reviews.reviewer_name.default = auth.user.first_name
+        db.reviews.reviewer_id.default = auth.user.id
 
     db.reviews.products_id.default = request.vars.productID
     db.reviews.review_rating.default = 0
@@ -221,6 +222,17 @@ def searchProduct():
         redirect(URL('next'))
     elif form.errors:
         response.flash = 'form has errors'
+    return locals()
+
+def getReviews():
+    review = db.reviews
+    reviewID = review.reviewer_id
+    query = reviewID == auth.user.id
+    search = db(query)
+
+    rows = search.select()
+    for row in rows:
+        
     return locals()
 
 def user():
