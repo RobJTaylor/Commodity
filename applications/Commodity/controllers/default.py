@@ -222,9 +222,12 @@ def searchProduct():
                       _class='col-sm-9 col-sm-offset-3'), _class='form-group'))
     if form.process().accepted:
         session.flash = 'form accepted'
-        redirect(URL('next'))
+        redirect(URL('searchResults'))
     elif form.errors:
         response.flash = 'form has errors'
+    return locals()
+
+def searchResults():
     return locals()
 
 def user():

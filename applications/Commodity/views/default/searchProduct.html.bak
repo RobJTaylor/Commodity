@@ -1,6 +1,10 @@
 {{extend 'layout.html'}}
 <div class="col-md-12">
     <h1>Search Products</h1>
-    <h2>Enter search details below: </h2>
-    <form class="form-horizontal form-group">{{=form}}</form>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3>Enter search details below: </h3>
+        </div>
+        <form action="#" class="form-horizontal form-group" method="post">{{=form}}</form>
+    </div>
 </div>
