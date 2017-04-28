@@ -120,11 +120,7 @@ def viewProduct():
     i = 0
 
     for row in db().select(db.review_rate.review_id,db.review_rate.user_id):
-        if row.review_id == request.vars.productID and row.user_id == auth.user.id:
-            resultsArray[i] = 1;
-            i = i + 1
-        else:
-            i = i + 1
+        i = i + 1
 
     reviews = db.reviews
     rProductID = reviews.products_id
