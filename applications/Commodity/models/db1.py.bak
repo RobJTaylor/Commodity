@@ -24,6 +24,11 @@ db.define_table('retailers',
                 Field('retailer_website',requires=IS_NOT_EMPTY())
                 )
 
+db.define_table('review_rate',
+                Field('user_id',requires=IS_NOT_EMPTY()),
+                Field('review_id',requires=IS_NOT_EMPTY())
+                )
+
 db.define_table('product_retail_link',
                 Field('id','reference products',requires=IS_NOT_EMPTY()),
                 Field('id','reference retailers',requires=IS_NOT_EMPTY())

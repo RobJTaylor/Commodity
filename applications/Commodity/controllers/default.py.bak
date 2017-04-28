@@ -41,6 +41,14 @@ def index():
     product3Tag2 = ""
     product3Tag3 = ""
 
+    productIDURL = [0] * 4
+    reviewerName = [0] * 4
+    reviewName = [0] * 4
+    reviewContent = [0] * 4
+    reviewRating = [0] * 4
+    reviewTimeStamp = [0] * 4
+    o = 0
+
     i = 0
     for row in db().select(db.products.ALL, limitby=(0,3), orderby=~db.products.time_stamp):
         if i == 0:
@@ -67,6 +75,15 @@ def index():
             product3Tag2 = row.tag_2
             product3Tag3 = row.tag_3
             i = i + 1
+
+    for row in db().select(db.reviews.ALL, limitby=(0,4), orderby=~db.reviews.time_stamp):
+        productIDURL[o] = URL('viewProduct', vars=dict(productID=row.products_id))
+        reviewerName[o] = row.reviewer_name
+        reviewName[o] = row.review_name
+        reviewContent[o] = row.review_content
+        reviewRating[o] = row.review_rating
+        reviewTimeStamp[o] = row.time_stamp
+        o = o + 1
     return locals()
 
 def newProduct():
