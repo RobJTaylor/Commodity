@@ -222,7 +222,7 @@ def searchProduct():
     else:
         response.flash = 'please fill the form'
 
-    if request.vars:
+    if request.vars.field1:
         productName = [0] * 20
         productDescription = [0] * 20
         productImage = [0] * 20
@@ -248,12 +248,12 @@ def searchProduct():
 
         i = 0
         for row in db(statementBuild).select(db.products.ALL, limitby=(0,19)):
-            productName = [i] = row.product_name
-            productDescription = [i] = row.product_description
-            productImage = [i] = product_image
-            productTag1 = [i] = tag_1
-            productTag2 = [i] = tag_2
-            productTag3 = [i] = tag_3
+            productName [i] = row.product_name
+            productDescription [i] = row.product_description
+            productImage [i] = row.product_image
+            productTag1 [i] = row.tag_1
+            productTag2 [i] = row.tag_2
+            productTag3 [i] = row.tag_3
     return locals()
 
 

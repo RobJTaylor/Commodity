@@ -224,7 +224,7 @@ def searchProduct():
 
     if request.vars:
         productName = [0] * 20
-        productURL = [0] * 20
+        productDescription = [0] * 20
         productImage = [0] * 20
         productTag1 = [0] * 20
         productTag2 = [0] * 20
@@ -246,7 +246,14 @@ def searchProduct():
         if searchTagThree:
             statementBuild = statementBuild +" & (db.products.tag_3==" + searchTagThree + ")"
 
+        i = 0
         for row in db(statementBuild).select(db.products.ALL, limitby=(0,19)):
+            productName [i] = row.product_name
+            productDescription [i] = row.product_description
+            productImage [i] = row.product_image
+            productTag1 [i] = row.tag_1
+            productTag2 [i] = row.tag_2
+            productTag3 [i] = row.tag_3
     return locals()
 
 
