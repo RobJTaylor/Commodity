@@ -24,9 +24,9 @@
     <div class="panel-body">
         <p>Date: {{=row.time_stamp}}</p>
         <p>Author: {{=row.reviewer_name}}</p>
-        <p>Rating: {{=row.review_rating}}</p>
+        <p><section class="reviewText">Rating:</section> {{=row.review_rating}}</p>
         <p class="reviewText">Review:</p>
-        <p>{{=row.review_content}}</p>
+        {{=row.review_content}}
     </div>
     <div class="panel-footer">
         {{reviewID = row.id}}
@@ -45,7 +45,7 @@
     {{if loggedIn == 0:}}
         <p class="helpfulText">Was this review helpful? <a href="http://127.0.0.1:8000/Commodity/default/user/login">Login/Register to rate it</a></p>
     {{elif canReview == 1:}}
-        <p class="helpfulText">Was this review helpful? {{=A('Yes', callback=URL('upvote', args=reviewID))}} {{=A('No', callback=URL('downvote', args=row.id))}} </p>
+        <p class="helpfulText">Was this review helpful? {{=A('Yes', callback=URL('upvote', args=reviewID))}} {{=A('No', callback=URL('downvote', args=reviewID))}} </p>
     {{elif canReview == 0:}}
             <p class="helpfulText">Thank you for rating this review</p>
     {{pass}}

@@ -48,7 +48,7 @@
     </div>
     <div class="panel-body">
         <div class="jumbotron center">
-            <h3 class="text-top">New Reviews:</h3>
+            <h3 class="text-top">Latest Reviews:</h3>
             {{u = 0}}
             {{for item in productIDURL:}}
             <div class="panel panel-success">
@@ -56,11 +56,11 @@
                     <h4>{{=reviewName[u]}}</h4>
                 </div>
                 <div class="panel-body">
-                    <p class="reviewText">Date: {{=reviewTimeStamp[u]}}</p>
-                    <p class="reviewText">Author: {{=reviewerName[u]}}</p>
-                    <h4>Comments: {{=reviewContent[u]}}:</h4>
-                    <p class="reviewText"></p>
-                    <p class="reviewText">Rating: {{=reviewRating[u]}}</p>
+                    <p><section class="reviewText">Date:</section> {{=reviewTimeStamp[u]}}</p>
+                    <br>
+                    <p><section class="reviewText">Author:</section> {{=reviewerName[u]}}</p>
+                    <p><section class="reviewText">Comments:</section> {{=reviewContent[u]}}:</p>
+                    <p><section class="reviewText">Rating:</section> {{=reviewRating[u]}}</p>
                     <p><a href="{{=productIDURL[u]}}" class="btn btn-primary" role="button">View Product</a></p>
                 </div>
             </div>
