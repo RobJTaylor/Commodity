@@ -31,7 +31,7 @@
         {{reviewID = row.id}}
         {{loop = 1}}
         {{canReview = 1}}
-        {{for row in db().select(db.review_rate.ALL):}}
+        {{for row in db().select(db.review_rate_link.ALL):}}
             {{if loggedIn == 1 and loop == 1:}}
                 {{if str(reviewID) == str(row.review_id) and str(auth.user.id) == str(row.user_id):}}
                     {{canReview = 0}}

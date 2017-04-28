@@ -22,20 +22,12 @@
         <h4>{{=row.review_name}}</h4>
     </div>
     <div class="panel-body">
-        <p>Date: {{=row.time_stamp}}</p>
-        <p>Author: {{=row.reviewer_name}}</p>
+        <p><section class="reviewText">Date:</section> {{=row.time_stamp}}</p>
+        <p><section class="reviewText">Author:</section> {{=row.reviewer_name}}</p>
         <p><section class="reviewText">Rating:</section> {{=row.review_rating}}</p>
-        <p class="reviewText">Review:</p>
-        {{=row.review_content}}
+        <p><section class="reviewText">Review:</section> {{=row.review_content}}</p>
     </div>
     <div class="panel-footer">
-<<<<<<< HEAD
-        {{if reviewCheck == 0:}}
-            <p class="helpfulText">Was this review helpful? <a href="http://127.0.0.1:8000/Commodity/default/user/login">Login/Register to rate it</a></p>
-            <p class="helpfulText">Was this review helpful? {{=A('Yes', callback=URL('upvote', args=row.id))}} {{=A('No', callback=URL('downvote', args=row.id))}} </p>
-        {{else:}}
-        {{pass}}
-=======
         {{reviewID = row.id}}
         {{loop = 1}}
         {{canReview = 1}}
@@ -56,7 +48,6 @@
     {{elif canReview == 0:}}
             <p class="helpfulText">Thank you for rating this review</p>
     {{pass}}
->>>>>>> origin/Commodity-2.0
     </div>
 </div>
 {{pass}}

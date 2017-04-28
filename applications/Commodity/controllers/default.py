@@ -125,7 +125,7 @@ def viewProduct():
         tag2 = row.tag_2
         tag3 = row.tag_3
         timestamp = row.time_stamp
-    for row in db().select(db.review_rate.review_id,db.review_rate.user_id):
+    for row in db().select(db.review_rate_link.review_id,db.review_rate_link.user_id):
         i = i + 1
 
     if i == 0:
@@ -135,7 +135,7 @@ def viewProduct():
 
     i = 0
 
-    for row in db().select(db.review_rate.review_id,db.review_rate.user_id):
+    for row in db().select(db.review_rate_link.review_id,db.review_rate_link.user_id):
         i = i + 1
 
     reviews = db.reviews
@@ -174,7 +174,7 @@ def upvote():
 
     reviewID = request.args[0]
     userID = auth.user.id
-    db.review_rate.insert(user_id=userID,review_id=reviewID)
+    db.review_rate_link.insert(user_id=userID,review_id=reviewID)
 
     return locals()
 
@@ -192,7 +192,7 @@ def downvote():
 
     reviewID = request.args[0]
     userID = auth.user.id
-    db.review_rate.insert(user_id=userID,review_id=reviewID)
+    db.review_rate_link.insert(user_id=userID,review_id=reviewID)
 
     return locals()
 
@@ -257,8 +257,6 @@ def searchProduct():
             productTag3 [i] = row.tag_3
     return locals()
 
-<<<<<<< HEAD
-=======
 def getReviews():
     review = db.reviews
     reviewID = review.reviewer_id
@@ -268,7 +266,6 @@ def getReviews():
     rows = search.select()
 
     return locals()
->>>>>>> origin/Commodity-2.0
 
 def user():
     """
