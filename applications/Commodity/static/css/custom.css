@@ -1,4 +1,8 @@
 /*custom css*/
+.custombold {
+    font-weight: bold;
+}
+
 .helpfulText a{
     color: #000000;
     font-weight: bold;

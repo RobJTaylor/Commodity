@@ -5,6 +5,14 @@
         <div class="panel-heading">
             <h3>Enter search details below: </h3>
         </div>
-        <form action="#" class="form-horizontal form-group" method="post">{{=form}}</form>
+        <div class="panel-body">
+            <form action="{{=URL}}" class="form-horizontal form-group" method="post">{{=form}}</form>
+        </div>
     </div>
+    <h2>Submitted variables</h2>
+    {{=BEAUTIFY(request.vars)}}
+    <h2>Accepted variables</h2>
+    {{=BEAUTIFY(form.vars)}}
+    <h2>Errors in form</h2>
+    {{=BEAUTIFY(form.errors)}}
 </div>

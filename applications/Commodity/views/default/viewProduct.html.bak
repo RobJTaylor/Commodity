@@ -22,18 +22,41 @@
         <h4>{{=row.review_name}}</h4>
     </div>
     <div class="panel-body">
-        <p class="reviewText">Date: {{=row.time_stamp}}</p>
-        <p class="reviewText">Author: {{=row.reviewer_name}}</p>
-        <h4>Comments:</h4>
-        <p class="reviewText">{{=row.review_content}}</p>
-        <p class="reviewText">Rating: {{=row.review_rating}}</p>
+        <p>Date: {{=row.time_stamp}}</p>
+        <p>Author: {{=row.reviewer_name}}</p>
+        <p>Rating: {{=row.review_rating}}</p>
+        <p class="reviewText">Review:</p>
+        <p>{{=row.review_content}}</p>
     </div>
     <div class="panel-footer">
+<<<<<<< HEAD
         {{if reviewCheck == 0:}}
             <p class="helpfulText">Was this review helpful? <a href="http://127.0.0.1:8000/Commodity/default/user/login">Login/Register to rate it</a></p>
             <p class="helpfulText">Was this review helpful? {{=A('Yes', callback=URL('upvote', args=row.id))}} {{=A('No', callback=URL('downvote', args=row.id))}} </p>
         {{else:}}
         {{pass}}
+=======
+        {{reviewID = row.id}}
+        {{loop = 1}}
+        {{canReview = 1}}
+        {{for row in db().select(db.review_rate.ALL):}}
+            {{if loggedIn == 1 and loop == 1:}}
+                {{if str(reviewID) == str(row.review_id) and str(auth.user.id) == str(row.user_id):}}
+                    {{canReview = 0}}
+                    {{loop = 0}}
+                {{elif reviewID != row.review_id and auth.user.id != row.user_id:}}
+                    {{canReview = 1}}
+                {{pass}}
+            {{pass}}
+    {{pass}}
+    {{if loggedIn == 0:}}
+        <p class="helpfulText">Was this review helpful? <a href="http://127.0.0.1:8000/Commodity/default/user/login">Login/Register to rate it</a></p>
+    {{elif canReview == 1:}}
+        <p class="helpfulText">Was this review helpful? {{=A('Yes', callback=URL('upvote', args=reviewID))}} {{=A('No', callback=URL('downvote', args=row.id))}} </p>
+    {{elif canReview == 0:}}
+            <p class="helpfulText">Thank you for rating this review</p>
+    {{pass}}
+>>>>>>> origin/Commodity-2.0
     </div>
 </div>
 {{pass}}

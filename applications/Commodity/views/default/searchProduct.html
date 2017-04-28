@@ -6,7 +6,13 @@
             <h3>Enter search details below: </h3>
         </div>
         <div class="panel-body">
-            <form action="#" class="form-horizontal form-group" method="post">{{=form}}</form>
+            <form action="{{=URL()}}" class="form-horizontal form-group" method="post">{{=form}}</form>
         </div>
     </div>
+    <h2>Submitted variables</h2>
+    {{=BEAUTIFY(request.vars)}}
+    <h2>Accepted variables</h2>
+    {{=BEAUTIFY(form.vars)}}
+    <h2>Errors in form</h2>
+    {{=BEAUTIFY(form.errors)}}
 </div>

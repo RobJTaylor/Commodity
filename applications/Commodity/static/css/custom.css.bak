@@ -1,4 +1,11 @@
 /*custom css*/
+<<<<<<< HEAD
+.bold {
+    font-weight: bold;
+}
+
+=======
+>>>>>>> origin/Commodity-2.0
 .helpfulText a{
     color: #000000;
     font-weight: bold;
