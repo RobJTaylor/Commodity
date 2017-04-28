@@ -59,10 +59,24 @@ a {
     background-color: #31343a;
     overflow: hidden;
 }
+.bgcolor-green {
+    background-color: #93c54b;
+    overflow: hidden;
+    color: #efefef;
+}
+.fill-left-right {
+    width: 100%;
+}
+.rounded-corners {
+    border-radius: 5px;
+}
 .textcolor {
     color: #dbdde0;
 }
 .tagtext {
     color: #dbdde0;
     font-size: 10px;
+}
+.text-top {
+    margin-top: -20px;
 }
