@@ -10,7 +10,11 @@ p5
 I00
 sS'sortable'
 p6
+<<<<<<< HEAD
 I4
+=======
+I7
+>>>>>>> origin/Commodity-2.0
 sS'sql'
 p7
 S'CHAR(512)'
@@ -70,7 +74,11 @@ I512
 sg5
 I00
 sg6
+<<<<<<< HEAD
 I6
+=======
+I5
+>>>>>>> origin/Commodity-2.0
 sg7
 S'INTEGER'
 p28
@@ -119,7 +127,7 @@ I512
 sg5
 I00
 sg6
-I7
+I8
 sg7
 S'TIMESTAMP'
 p38
@@ -127,7 +135,28 @@ sg9
 I00
 sg10
 S'datetime'
+<<<<<<< HEAD
 p39
+=======
+p25
+ssS'review_content'
+p26
+(dp27
+g4
+I32768
+sg5
+I00
+sg6
+I6
+sg7
+S'TEXT'
+p28
+sg9
+I00
+sg10
+S'text'
+p29
+>>>>>>> origin/Commodity-2.0
 ssS'id'
 p40
 (dp41
@@ -144,5 +173,25 @@ sg9
 I00
 sg10
 S'id'
+<<<<<<< HEAD
 p43
+=======
+p33
+ssS'reviewer_id'
+p34
+(dp35
+g4
+I512
+sg5
+I00
+sg6
+I4
+sg7
+S'CHAR(512)'
+p36
+sg9
+I00
+sg10
+g15
+>>>>>>> origin/Commodity-2.0
 ss.

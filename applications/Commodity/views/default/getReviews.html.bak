@@ -1,0 +1,16 @@
+{{extend 'layout.html'}}
+<h1>Your Reviews</h1>
+<h2>Your reviews are listed below:</h2>
+{{for row in rows:}}
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4>{{=row.review_name}}</h4>
+    </div>
+    <div class="panel-body">
+        <p><section class="reviewText">Date:</section> {{=row.time_stamp}}</p>
+        <p><section class="reviewText">Author:</section> {{=row.reviewer_name}}</p>
+        <p><section class="reviewText">Rating:</section> {{=row.review_rating}}</p>
+        <p><section class="reviewText">Review:</section> {{=row.review_content}}</p>
+    </div>
+</div>
+{{pass}}

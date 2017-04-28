@@ -41,6 +41,14 @@ def index():
     product3Tag2 = ""
     product3Tag3 = ""
 
+    productIDURL = [0] * 4
+    reviewerName = [0] * 4
+    reviewName = [0] * 4
+    reviewContent = [0] * 4
+    reviewRating = [0] * 4
+    reviewTimeStamp = [0] * 4
+    o = 0
+
     i = 0
     for row in db().select(db.products.ALL, limitby=(0,3), orderby=~db.products.time_stamp):
         if i == 0:
@@ -67,6 +75,15 @@ def index():
             product3Tag2 = row.tag_2
             product3Tag3 = row.tag_3
             i = i + 1
+
+    for row in db().select(db.reviews.ALL, limitby=(0,4), orderby=~db.reviews.time_stamp):
+        productIDURL[o] = URL('viewProduct', vars=dict(productID=row.products_id))
+        reviewerName[o] = row.reviewer_name
+        reviewName[o] = row.review_name
+        reviewContent[o] = row.review_content
+        reviewRating[o] = row.review_rating
+        reviewTimeStamp[o] = row.time_stamp
+        o = o + 1
     return locals()
 
 def newProduct():
@@ -97,6 +114,7 @@ def viewProduct():
     tag2 = ""
     tag3 = ""
     timestamp = ""
+    i = 0
 
     for row in rows:
         name = row.product_name
@@ -108,9 +126,18 @@ def viewProduct():
         tag3 = row.tag_3
         timestamp = row.time_stamp
 
-    db.reviews.products_id.default = request.vars.productID
-    db.reviews.review_rating.default = 0
-    form = SQLFORM(db.reviews).process()
+    for row in db().select(db.review_rate.review_id,db.review_rate.user_id):
+        i = i + 1
+
+    if i == 0:
+        resultsArray = [0] * 1
+    else:
+        resultsArray = [0] * i
+
+    i = 0
+
+    for row in db().select(db.review_rate.review_id,db.review_rate.user_id):
+        i = i + 1
 
     reviews = db.reviews
     rProductID = reviews.products_id
@@ -119,12 +146,82 @@ def viewProduct():
 
     newRows = search.select()
 
-    loggedIn = false;
+    loggedIn = 0
 
     if not auth.is_logged_in():
-        loggedIn = false
+        loggedIn = 0
     else:
-        loggedIn = true
+        loggedIn = 1
+        db.reviews.reviewer_name.default = auth.user.first_name
+        db.reviews.reviewer_id.default = auth.user.id
+
+    db.reviews.products_id.default = request.vars.productID
+    db.reviews.review_rating.default = 0
+    form = SQLFORM(db.reviews).process()
+
+    return locals()
+
+def upvote():
+    reviews = db.reviews
+    reviewID = reviews.id
+    query = reviewID == request.args[0]
+    search = db(query)
+    rows = search.select()
+
+    for row in rows:
+        reviewRating = row.review_rating
+        reviewRating = reviewRating + 1
+        row.update_record(review_rating=reviewRating)
+
+    reviewID = request.args[0]
+    userID = auth.user.id
+    db.review_rate.insert(user_id=userID,review_id=reviewID)
+
+    return locals()
+
+def downvote():
+    reviews = db.reviews
+    reviewID = reviews.id
+    query = reviewID == request.args[0]
+    search = db(query)
+    rows = search.select()
+
+    for row in rows:
+        reviewRating = row.review_rating
+        reviewRating = reviewRating - 1
+        row.update_record(review_rating=reviewRating)
+
+    reviewID = request.args[0]
+    userID = auth.user.id
+    db.review_rate.insert(user_id=userID,review_id=reviewID)
+
+    return locals()
+
+def searchProduct():
+    form = FORM('',
+              DIV(LABEL('Product Name:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='productName', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagOne', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagTwo', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
+                  DIV(INPUT(_name='tagThree', _class='form-control string'),
+                      _class='col-sm-9'), _class='form-group'),
+
+              DIV(DIV(INPUT(_type='submit', _class="btn btn-primary"),
+                      _class='col-sm-9 col-sm-offset-3'), _class='form-group'))
+    if form.process().accepted:
+        session.flash = 'form accepted'
+        redirect(URL('next'))
+    elif form.errors:
+        response.flash = 'form has errors'
     return locals()
 
 def user():
