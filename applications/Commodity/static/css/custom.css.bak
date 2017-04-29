@@ -1,4 +1,9 @@
 /*custom css*/
+.reviewerImage {
+    width: 20vw;
+    height: auto;
+}
+
 .custombold {
     font-weight: bold;
 }
@@ -16,6 +21,7 @@
 
 .reviewText {
     font-weight: bold;
+    display: inline-block;
 }
 
 .reviews {

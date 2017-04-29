@@ -20,15 +20,25 @@
 <div class="panel panel-success">
     <div class="panel-heading">
         <h4>{{=row.review_name}}</h4>
+        {{timeStamp = row.time_stamp}}
+        {{reviewerName = row.reviewer_name}}
+        {{reviewRating = row.review_rating}}
+        {{reviewContent = row.review_content}}
+        {{reviewID = row.id}}
     </div>
     <div class="panel-body">
-        <p><section class="reviewText">Date:</section> {{=row.time_stamp}}</p>
-        <p><section class="reviewText">Author:</section> {{=row.reviewer_name}}</p>
-        <p><section class="reviewText">Rating:</section> {{=row.review_rating}}</p>
-        <p><section class="reviewText">Review:</section> {{=row.review_content}}</p>
+        <section class="center">
+        {{for row in db(db.auth_user.id == row.reviewer_id).select():}}
+            {{reviewerPicture = row.profile_image}}
+            <img src="{{=URL('default', 'download', args=reviewerPicture)}}" class="reviewerImage img-circle center"/>
+        {{pass}}
+            <p><section class="reviewText">Author:</section> {{=reviewerName}}</p>
+            <p><section class="reviewText">Date:</section> {{=timeStamp}}</p>
+            <p><section class="reviewText">Review:</section> {{=reviewContent}}</p>
+            <p><section class="reviewText">Rating:</section> {{=reviewRating}}</p>
+        </section>
     </div>
     <div class="panel-footer">
-        {{reviewID = row.id}}
         {{loop = 1}}
         {{canReview = 1}}
         {{for row in db().select(db.review_rate_link.ALL):}}

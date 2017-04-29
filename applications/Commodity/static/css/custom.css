@@ -1,4 +1,10 @@
 /*custom css*/
+.reviewerImage {
+    width: 20vw;
+    height: auto;
+    max-width: 300px;
+}
+
 .custombold {
     font-weight: bold;
 }

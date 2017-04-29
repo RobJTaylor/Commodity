@@ -47,6 +47,8 @@ def index():
     reviewContent = [0] * 4
     reviewRating = [0] * 4
     reviewTimeStamp = [0] * 4
+    reviewerPicture = [0] * 4
+    reviewID = [0] * 4
     o = 0
 
     i = 0
@@ -76,6 +78,15 @@ def index():
             product3Tag3 = row.tag_3
             i = i + 1
 
+    loggedIn = 0
+
+    if not auth.is_logged_in():
+        loggedIn = 0
+    else:
+        loggedIn = 1
+        db.reviews.reviewer_name.default = auth.user.first_name
+        db.reviews.reviewer_id.default = auth.user.id
+
     for row in db().select(db.reviews.ALL, limitby=(0,4), orderby=~db.reviews.time_stamp):
         productIDURL[o] = URL('viewProduct', vars=dict(productID=row.products_id))
         reviewerName[o] = row.reviewer_name
@@ -83,6 +94,9 @@ def index():
         reviewContent[o] = row.review_content
         reviewRating[o] = row.review_rating
         reviewTimeStamp[o] = row.time_stamp
+        reviewID[o] = row.id
+        for row in db(db.auth_user.id == row.reviewer_id).select():
+            reviewerPicture[o] = row.profile_image
         o = o + 1
     return locals()
 
@@ -176,6 +190,13 @@ def upvote():
     userID = auth.user.id
     db.review_rate_link.insert(user_id=userID,review_id=reviewID)
 
+    for row in db(db.auth_user.id == userID, db.auth_user.reviewer_score).select():
+        reviewerScore = row.reviewer_score
+        if reviewerScore == None:
+            reviewerScore = 0
+        reviewerScore = reviewerScore + 1
+        row.update_record(reviewer_score=reviewerScore)
+
     return locals()
 
 def downvote():
@@ -193,6 +214,13 @@ def downvote():
     reviewID = request.args[0]
     userID = auth.user.id
     db.review_rate_link.insert(user_id=userID,review_id=reviewID)
+
+    for row in db(db.auth_user.id == userID, db.auth_user.reviewer_score).select():
+        reviewerScore = row.reviewer_score
+        if reviewerScore == None:
+            reviewerScore = 0
+        reviewerScore = reviewerScore - 1
+        row.update_record(reviewer_score=reviewerScore)
 
     return locals()
 
