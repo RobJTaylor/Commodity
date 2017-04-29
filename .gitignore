@@ -10,3 +10,4 @@ parameters_8000.py
 *.log
 *.sqlite
 applications/Commodity/databases/storage.sqlite
+applications/Commodity/databases/*
