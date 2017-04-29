@@ -87,7 +87,7 @@ def index():
         db.reviews.reviewer_name.default = auth.user.first_name
         db.reviews.reviewer_id.default = auth.user.id
 
-    for row in db().select(db.reviews.ALL, limitby=(0,4), orderby=~db.reviews.time_stamp):
+    for row in db().select(db.reviews.ALL, limitby=(0,4), orderby=~db.reviews.review_score):
         productIDURL[o] = URL('viewProduct', vars=dict(productID=row.products_id))
         reviewerName[o] = row.reviewer_name
         reviewName[o] = row.review_name

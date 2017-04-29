@@ -41,14 +41,9 @@
     </header>
 {{end}}
 
-
-<div class="panel panel-success">
-    <div class="panel-heading">
-        <h1 class="center helpfulText">Welcome to Commodity - The Product Review Platform.</h1>
-    </div>
-    <div class="panel-body">
-        <div class="jumbotron center">
-            <h3 class="text-top">Latest Reviews:</h3>
+    <h1 class="center helpfulText">Welcome to Commodity - The Product Review Platform.</h1>
+    <div class="jumbotron center">
+        <h3 class="text-top">Top Reviews:</h3>
             {{u = 0}}
             {{for item in productIDURL:}}
             <div class="panel panel-success">
@@ -63,7 +58,6 @@
                     <p><section class="reviewText">Rating:</section> {{=reviewRating[u]}}</p>
                     <p><a href="{{=productIDURL[u]}}" class="btn btn-primary" role="button">View Product</a></p>
                 </div>
-    </div>
             </div>
             {{u = u + 1}}
             {{pass}}
