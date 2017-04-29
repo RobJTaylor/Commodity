@@ -6,13 +6,27 @@
             <h3>Enter search details below: </h3>
         </div>
         <div class="panel-body">
-            <form action="{{=URL}}" class="form-horizontal form-group" method="post">{{=form}}</form>
+            <form action="{{=URL()}}" class="form-horizontal form-group" method="post">{{=form}}</form>
         </div>
     </div>
-    <h2>Submitted variables</h2>
-    {{=BEAUTIFY(request.vars)}}
-    <h2>Accepted variables</h2>
-    {{=BEAUTIFY(form.vars)}}
-    <h2>Errors in form</h2>
-    {{=BEAUTIFY(form.errors)}}
+    {{if searchCheck == True:}}
+        {{i = 0}}
+        {{for row in productName:}}
+    <div class="jumbotron">
+        <img class="img-search" src="{{=URL('default', 'download', args=productImage[0])}}"/>
+        <h1 class="text-search">{{=productName[i]}}</h1>
+        <div class="desc-search">
+            <p class="text-search">{{=productDescription[i]}}</p>
+        </div>
+        <p class="text-search">£{{=productPrice[i]}}</p>
+        <p class="text-search">Tags:
+            <a>{{=productTag1[i]}}</a>
+            <a>{{=productTag2[i]}}</a>
+            <a>{{=productTag3[i]}}</a>
+        </p>
+        <p class="text-search">{{=ProductTimeStamp[i]}}</p>
+    </div>
+        {{i = i + 1}}
+        {{pass}}
+    {{pass}}
 </div>

@@ -81,3 +81,16 @@ a {
 .text-top {
     margin-top: -20px;
 }
+.img-search {
+    width: 20vw;
+    height: auto;
+    float: left;
+    vertical-align: top;
+}
+.desc-search {
+    margin-bottom: 50px;
+}
+.text-search {
+    margin-left: 25%;
+    vertical-align: top;
+}

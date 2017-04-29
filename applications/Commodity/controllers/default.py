@@ -199,7 +199,7 @@ def downvote():
 def searchProduct():
     form = FORM('',
               DIV(LABEL('Product Name:',_class='control-label col-sm-3'),
-                  DIV(INPUT(_name='productName', _class='form-control string',requires=IS_NOT_EMPTY()),
+                  DIV(INPUT(_name='productName', _class='form-control string'),
                       _class='col-sm-9'), _class='form-group'),
 
               DIV(LABEL('Product Tag:',_class='control-label col-sm-3'),
@@ -223,38 +223,58 @@ def searchProduct():
     else:
         response.flash = 'please fill the form'
 
-    if request.vars.field1:
-        productName = [0] * 20
-        productDescription = [0] * 20
-        productImage = [0] * 20
-        productTag1 = [0] * 20
-        productTag2 = [0] * 20
-        productTag3 = [0] * 20
+    searchCheck = False
+    if request.vars:
         statementBuild = ""
-        searchProduct = request.vars.field1
-        if searchProduct:
-            statementBuild = "(db.products.product_name==" + searchProduct + ")"
+        searchProductName = request.vars.productName
+        if searchProductName == None:
+            searchProductName = ""
+        searchProductName = "%" + searchProductName + "%"
 
-        searchTagOne = request.vars.field2
-        if searchTagOne:
-            statementBuild = statementBuild +" & (db.products.tag_1==" + searchTagOne + ")"
+        searchTagOne = request.vars.tagOne
+        if searchTagOne == None:
+            searchTagOne = ""
+        searchTagOne = "%" + searchTagOne + "%"
 
-        searchTagTwo = request.vars.field3
-        if searchTagTwo:
-            statementBuild = statementBuild +" & (db.products.tag_2==" + searchTagTwo + ")"
+        searchTagTwo = request.vars.tagTwo
+        if searchTagTwo == None:
+            searchTagTwo = ""
+        searchTagTwo = "%" + searchTagTwo + "%"
 
-        searchTagThree = request.vars.field4
-        if searchTagThree:
-            statementBuild = statementBuild +" & (db.products.tag_3==" + searchTagThree + ")"
+        searchTagThree = request.vars.tagThree
+        if searchTagThree == None:
+            searchTagThree = ""
+        searchTagThree = "%" + searchTagThree + "%"
 
         i = 0
-        for row in db(statementBuild).select(db.products.ALL, limitby=(0,19)):
+        for row in db(db.products.product_name.like(searchProductName) and
+                     db.products.tag_1.like(searchTagOne) and
+                     db.products.tag_2.like(searchTagTwo) and
+                     db.products.tag_3.like(searchTagThree)).select(db.products.ALL):
+            i = i + 1
+        productName = [0] * i
+        productDescription = [0] * i
+        productImage = [0] * i
+        productPrice = [0] * i
+        productTag1 = [0] * i
+        productTag2 = [0] * i
+        productTag3 = [0] * i
+        ProductTimeStamp = [0] * i
+        i = 0
+        for row in db(db.products.product_name.like(searchProductName) and
+                     db.products.tag_1.like(searchTagOne) and
+                     db.products.tag_2.like(searchTagTwo) and
+                     db.products.tag_3.like(searchTagThree)).select(db.products.ALL):
             productName [i] = row.product_name
             productDescription [i] = row.product_description
             productImage [i] = row.product_image
+            productPrice [i] = row.product_price
             productTag1 [i] = row.tag_1
             productTag2 [i] = row.tag_2
             productTag3 [i] = row.tag_3
+            ProductTimeStamp [i] = row.time_stamp
+            i = i + 1
+        searchCheck = True
     return locals()
 
 def getReviews():

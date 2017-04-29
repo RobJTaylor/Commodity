@@ -30,8 +30,7 @@
                       <img src="{{=URL('default', 'download', args=product3Image)}}"/>
                       <div class="caption">
                           <h3>{{=product3Name}} <span class="label label-success">NEW</span> </h3>
-                          <p>Tags: {{=product3Tag1}} {{=product3Tag2}} {{=product3Tag3}}</p>
-                          <p><a href="{{=product3URL}}" class="btn btn-primary" role="button">View {{=product3Name}}</a></p>
+                          <p>Tags: {{=productTag1[0]}} {{=productTag2[0]}} {{=productTag3[0]}}</p>
                       </div>
                   </div>
               </div>
@@ -56,12 +55,11 @@
                     <h4>{{=reviewName[u]}}</h4>
                 </div>
                 <div class="panel-body">
-                    <p class="reviewText">Date: {{=reviewTimeStamp[u]}}</p>
+                    <p><section class="reviewText">Date:</section> {{=reviewTimeStamp[u]}}</p>
                     <br>
-                    <p class="reviewText">Author: {{=reviewerName[u]}}</p>
-                    <h4>Comments: {{=reviewContent[u]}}:</h4>
-                    <p class="reviewText"></p>
-                    <p class="reviewText">Rating: {{=reviewRating[u]}}</p>
+                    <p><section class="reviewText">Author:</section> {{=reviewerName[u]}}</p>
+                    <p><section class="reviewText">Comments:</section> {{=reviewContent[u]}}:</p>
+                    <p><section class="reviewText">Rating:</section> {{=reviewRating[u]}}</p>
                     <p><a href="{{=productIDURL[u]}}" class="btn btn-primary" role="button">View Product</a></p>
                 </div>
             </div>
