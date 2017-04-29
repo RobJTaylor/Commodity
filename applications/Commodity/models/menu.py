@@ -33,7 +33,6 @@ response.menu = [
     (T('Add Retailer'), False, URL('default', 'addRetailer'), []),
     (T('View All Products'), False, URL('default', 'viewAllProducts'), []),
     (T('Your Reviews'), False, URL('default', 'getReviews'), []),
-    (T('Upvote test'), False, URL('default', 'upvote', args=5), []),
     (T('Search Products'), False, URL('default', 'searchProduct'), [])
 ]
 
