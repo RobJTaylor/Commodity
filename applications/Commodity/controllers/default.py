@@ -114,6 +114,12 @@ def viewAllProducts():
     rows = db(db.products).select()
     return locals()
 
+def updateProduct():
+    from gluon.tools import Crud
+    crud = Crud(db)
+    form = crud.update(db.products,request.vars.productID)
+    return locals()
+
 def viewProduct():
     product = db.products
     productID = product.id

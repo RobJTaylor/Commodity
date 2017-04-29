@@ -13,6 +13,7 @@
     {{else:}}
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#reviewModal">Leave a Review</button>
     {{pass}}
+    <a href="{{=URL('updateProduct',vars=dict(productID=queryID))">Edit Product</a>
 </section>
 
 <h1>Reviews:</h1>
