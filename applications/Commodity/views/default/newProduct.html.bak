@@ -1,4 +1,10 @@
 {{extend 'layout.html'}}
 <h1>Add Product</h1>
-    <h2>Enter product details:</h2>
-    {{=form}}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h2>Enter product details:</h2>
+        </div>
+        <div class="panel-body">
+            <form action="#" class="form-horizontal form-group" method="post">{{=form}}</form>
+        </div>
+    </div>

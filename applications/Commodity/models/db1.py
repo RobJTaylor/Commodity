@@ -7,7 +7,8 @@ db.define_table('products',
                 Field('tag_1', requires=IS_NOT_EMPTY()),
                 Field('tag_2', requires=IS_NOT_EMPTY()),
                 Field('tag_3', requires=IS_NOT_EMPTY()),
-                Field('time_stamp','datetime',writable=False,default=request.now)
+                Field('time_stamp','datetime',writable=False,default=request.now),
+                Field('product_rating', 'integer', writable=False)
                 )
 
 db.define_table('reviews',
@@ -23,6 +24,11 @@ db.define_table('reviews',
 db.define_table('retailers',
                 Field('retailer_name',requires=IS_NOT_EMPTY()),
                 Field('retailer_website',requires=IS_NOT_EMPTY())
+                )
+
+db.define_table('product_rate_link',
+                Field('user_id',requires=IS_NOT_EMPTY()),
+                Field('product_id',requires=IS_NOT_EMPTY()),
                 )
 
 db.define_table('review_rate_link',
