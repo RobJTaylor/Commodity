@@ -43,6 +43,7 @@ def index():
 
     productIDURL = [0] * 4
     reviewerName = [0] * 4
+    reviewerID = [0] * 4
     reviewName = [0] * 4
     reviewContent = [0] * 4
     reviewRating = [0] * 4
@@ -87,7 +88,7 @@ def index():
         db.reviews.reviewer_name.default = auth.user.first_name
         db.reviews.reviewer_id.default = auth.user.id
 
-    for row in db().select(db.reviews.ALL, limitby=(0,4), orderby=~db.reviews.review_score):
+    for row in db().select(db.reviews.ALL, limitby=(0,4), orderby=~db.reviews.review_rating):
         productIDURL[o] = URL('viewProduct', vars=dict(productID=row.products_id))
         reviewerName[o] = row.reviewer_name
         reviewName[o] = row.review_name
@@ -95,6 +96,7 @@ def index():
         reviewRating[o] = row.review_rating
         reviewTimeStamp[o] = row.time_stamp
         reviewID[o] = row.id
+        reviewerID[o] = row.reviewer_id
         for row in db(db.auth_user.id == row.reviewer_id).select():
             reviewerPicture[o] = row.profile_image
         o = o + 1
@@ -286,11 +288,13 @@ def searchProduct():
     return locals()
 
 def getReviews():
+    userID = request.args[0]
+    userName = request.args[1]
+
     review = db.reviews
     reviewID = review.reviewer_id
-    query = reviewID == auth.user.id
+    query = reviewID == userID
     search = db(query)
-
     rows = search.select()
 
     return locals()

@@ -1,6 +1,11 @@
 {{extend 'layout.html'}}
-<h1>Your Reviews</h1>
-<h2>Your reviews are listed below:</h2>
+{{for row in db(db.auth_user.id == userID,db.auth_user.ALL).select():}}
+    {{userImage = row.profile_image}}
+    {{userScore = row.reviewer_score}}
+    <h1>{{=userName}}'s Reviews:</h1>
+    <img src="{{=URL('default', 'download', args=userImage)}}" class="reviewerImage img-circle center"/>
+    <h4>Review score: {{=userScore}}</h4>
+{{pass}}
 {{for row in rows:}}
 <div class="panel panel-success">
     <div class="panel-heading">

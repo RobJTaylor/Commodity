@@ -2,6 +2,7 @@
 .reviewerImage {
     width: 20vw;
     height: auto;
+    max-width: 300px;
 }
 
 .custombold {
@@ -34,7 +35,8 @@
 }
 
 a {
-    color: #dbdde0;
+    color: #000000;
+    text-decoration: underline;
 }
 .newProducts {
     color: #31343a;

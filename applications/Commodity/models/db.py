@@ -87,7 +87,7 @@ from gluon.tools import Auth, Service, PluginManager
 auth = Auth(db, host_names=myconf.get('host.names'))
 auth.settings.extra_fields['auth_user'] = [
     Field('profile_image', 'upload', requires=IS_NOT_EMPTY()),
-    Field('reviewerScore', 'integer', writable=False)
+    Field('reviewer_score', 'integer', writable=False)
     ]
 service = Service()
 plugins = PluginManager()

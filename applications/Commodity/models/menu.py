@@ -32,8 +32,8 @@ response.menu = [
     (T('New Product'), False, URL('default', 'newProduct'), []),
     (T('Add Retailer'), False, URL('default', 'addRetailer'), []),
     (T('View All Products'), False, URL('default', 'viewAllProducts'), []),
-    (T('Your Reviews'), False, URL('default', 'getReviews'), []),
-    (T('Search Products'), False, URL('default', 'searchProduct'), [])
+    (T('Search Products'), False, URL('default', 'searchProduct'), []),
+    #(T('Your Reviews'), False, URL('default', 'getReviews', args=(auth.user.id,auth.user.first_name)), [])
 ]
 
 DEVELOPMENT_MENU = True

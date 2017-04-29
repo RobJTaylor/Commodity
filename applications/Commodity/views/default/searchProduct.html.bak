@@ -6,7 +6,7 @@
             <h3>Enter search details below: </h3>
         </div>
         <div class="panel-body">
-            <form action="{{=URL}}" class="form-horizontal form-group" method="post">{{=form}}</form>
+            <form action="{{=URL()}}" class="form-horizontal form-group" method="post">{{=form}}</form>
         </div>
     </div>
     <h2>Submitted variables</h2>

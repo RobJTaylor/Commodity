@@ -41,7 +41,22 @@
     </header>
 {{end}}
 
-    <h1 class="center helpfulText">Welcome to Commodity - The Product Review Platform.</h1>
+    {{if auth.is_logged_in():}}
+        <h1 class="center helpfulText">Welcome back, {{=auth.user.first_name}}!</h1>
+        <section class="center">
+            <img src="{{=URL('default', 'download', args=auth.user.profile_image)}}" class="reviewerImage img-circle"/>
+            <br>
+            <br>
+            <a role="button" class="btn btn-primary" href="http://127.0.0.1:8000/Commodity/default/user/profile">View your profile</a>
+            <a role="button" class="btn btn-primary" href="{{=URL('getReviews',args=(auth.user.id,auth.user.first_name))}}">View your reviews</a>
+        </section>
+    {{else:}}
+        <h1 class="center helpfulText">Welcome to Commodity - The Product Review Platform.</h1>
+        <section class="center">
+            <button type="button" class="btn btn-primary">Login/Register for a Commodity account</button>
+        </section>
+    {{pass}}
+    <br>
     <div class="jumbotron center">
         <h3 class="text-top">Top Reviews:</h3>
             {{u = 0}}
@@ -51,8 +66,10 @@
                     <h4>{{=reviewName[u]}}</h4>
                 </div>
                 <div class="panel-body">
+                    <a href="{{=URL('getReviews',args=(reviewerID[u],reviewerName[u]))}}">
                     <img src="{{=URL('default', 'download', args=reviewerPicture[u])}}" class="reviewerImage img-circle"/>
                     <p><section class="reviewText">Author:</section> {{=reviewerName[u]}}</p>
+                    </a>
                     <p><section class="reviewText">Date:</section> {{=reviewTimeStamp[u]}}</p>
                     <p><section class="reviewText">Comments:</section> {{=reviewContent[u]}}</p>
                     <p><section class="reviewText">Rating:</section> {{=reviewRating[u]}}</p>

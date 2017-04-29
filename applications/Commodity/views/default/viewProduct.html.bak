@@ -22,23 +22,26 @@
         <h4>{{=row.review_name}}</h4>
         {{timeStamp = row.time_stamp}}
         {{reviewerName = row.reviewer_name}}
+        {{reviewerID = row.reviewer_id}}
         {{reviewRating = row.review_rating}}
         {{reviewContent = row.review_content}}
+        {{reviewID = row.id}}
     </div>
     <div class="panel-body">
         <section class="center">
+        <a href="{{=URL('getReviews',args=(reviewerID,reviewerName))}}">
         {{for row in db(db.auth_user.id == row.reviewer_id).select():}}
             {{reviewerPicture = row.profile_image}}
             <img src="{{=URL('default', 'download', args=reviewerPicture)}}" class="reviewerImage img-circle center"/>
         {{pass}}
             <p><section class="reviewText">Author:</section> {{=reviewerName}}</p>
+        </a>
             <p><section class="reviewText">Date:</section> {{=timeStamp}}</p>
             <p><section class="reviewText">Review:</section> {{=reviewContent}}</p>
             <p><section class="reviewText">Rating:</section> {{=reviewRating}}</p>
         </section>
     </div>
     <div class="panel-footer">
-        {{reviewID = row.id}}
         {{loop = 1}}
         {{canReview = 1}}
         {{for row in db().select(db.review_rate_link.ALL):}}
