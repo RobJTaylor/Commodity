@@ -117,7 +117,7 @@ def viewAllProducts():
 def updateProduct():
     from gluon.tools import Crud
     crud = Crud(db)
-    crud.update(db.products,request.vars.productID)
+    form = crud.update(db.products,request.vars.productID)
     return locals()
 
 def viewProduct():
@@ -179,6 +179,14 @@ def viewProduct():
     db.reviews.products_id.default = request.vars.productID
     db.reviews.review_rating.default = 0
     form = SQLFORM(db.reviews).process()
+
+    from gluon.tools import Crud
+    crud = Crud(db)
+    deleteForm=FORM.confirm("Are you sure you want to delete?")
+    if deleteForm.accepted:
+        crud.delete(db.products,request.vars.productID)
+    else:
+        pass
 
     return locals()
 

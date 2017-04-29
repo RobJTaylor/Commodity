@@ -180,6 +180,14 @@ def viewProduct():
     db.reviews.review_rating.default = 0
     form = SQLFORM(db.reviews).process()
 
+    from gluon.tools import Crud
+    crud = Crud(db)
+    deleteForm=FORM.confirm("Click here if you want to delete")
+    if deleteForm.accepted:
+        crud.delete(db.products,request.vars.productID)
+    else:
+        pass
+
     return locals()
 
 def upvote():
