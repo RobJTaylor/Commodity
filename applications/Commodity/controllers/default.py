@@ -102,6 +102,7 @@ def index():
         o = o + 1
     return locals()
 
+@auth.requires_membership('admin')
 def newProduct():
     form = SQLFORM(db.products).process()
     return locals()
